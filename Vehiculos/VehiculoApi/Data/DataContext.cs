@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VehiculoApi.Data.Entities;
 
 namespace VehiculoApi.Data
 {
-    public class DataContext :DbContext
+    public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) :base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
         public DbSet<VehicleType> vehicleTypes { get; set; }
@@ -19,6 +15,6 @@ namespace VehiculoApi.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();//exprecioon lamda se indica indice unico
         }
-       
+
     }
 }
